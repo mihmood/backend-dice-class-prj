@@ -6,12 +6,12 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      tier: backend
+      tier: backend-app
       app: dice
   template:
     metadata:
       labels: Project-backend-app
-        tier: backend
+        tier: backend-app
         app: dice
     spec:
       containers:
@@ -28,7 +28,7 @@ metadata:
   name: backend-app
 spec:
   selector:
-    tier: backend
+    tier: backend-app
     app: dice
   ports:
   - protocol: TCP
