@@ -1,17 +1,20 @@
 version: '3.2'
 services:
-  backend:
-    build: 
+  backend-app:
+    build: .
+      #image: mihmood/backend-app:1.4 
 #      context: backend-python/
       #context: mihmood/microservices-class-prj/backend-python/
-      dockerfile: Dockerfile
+      #      dockerfile: Dockerfile
     init: true
     deploy:
-      replicas: 3
+      replicas: 1
     networks:
     - application
     ports:
-    - "9090:8080"
+    - '9090:8080'
+      #    expose:
+      #- '9090'
   mysql:
     image: mysql:8.0.30
     restart: always
@@ -33,7 +36,6 @@ services:
 #    - mysql:/var/lib/mysql
     networks:
     - application
-
 #  frontend:
 #    build: 
 #      context: frontend-node/
