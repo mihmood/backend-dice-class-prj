@@ -1,8 +1,8 @@
-version: '1.0'
+version: '3.2'
 services:
   backend:
     build: 
-      context: backend-python/
+#      context: backend-python/
       #context: mihmood/microservices-class-prj/backend-python/
       dockerfile: Dockerfile
     init: true
@@ -10,10 +10,10 @@ services:
       replicas: 3
     networks:
     - application
+    ports:
+    - "9090:8080"
   mysql:
     image: mysql:8.0.30
-#    db:
-#    image: mysql:5.7
     restart: always
     environment:
       MYSQL_DATABASE: 'dbtest'
@@ -30,29 +30,29 @@ services:
       # Opens port 3306 on the container
       - '3306'
 #    volume: 
-#    - /home/ubuntu/dice_working/mysql_container_lab/mysql_vol:/var/lib/mysql
+#    - mysql:/var/lib/mysql
     networks:
     - application
 
-  frontend:
-    build: 
-      context: frontend-node/
-      #context: mihmood/microservices-class-prj/frontend-node/
-      dockerfile: Dockerfile
-    init: true
-    environment:
-      BACKEND_URL: backend:8080
-    deploy:
-      replicas: 1
-    networks:
-    - application
-    ports:
-    - "9091:8080"
-    depends_on:
-    - backend
+#  frontend:
+#    build: 
+#      context: frontend-node/
+#      #context: mihmood/microservices-class-prj/frontend-node/
+#      dockerfile: Dockerfile
+#    init: true
+#    environment:
+#      BACKEND_URL: backend:8080
+#    deploy:
+#      replicas: 1
+#    networks:
+#    - application
+#    ports:
+#    - "9091:8080"
+#    depends_on:
+#    - backend
 networks:
   application:
-    name: application
+#    name: application
 #volumes:
-#  - /home/ubuntu/dice_working/mysql_container_lab/mysql_vol:/var/lib/mysql
+#  - mysql: 
 #
