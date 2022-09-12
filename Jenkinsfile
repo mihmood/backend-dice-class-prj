@@ -25,11 +25,11 @@ pipeline {
 				script {
 					docker.withRegistry( '', registryCredential ) {
 						sh 'docker compose push mihmood/backend-python:latest'
-					} 
-				}
-			} 
-		}  
-    post {
+				} 
+			}
+		}
+	}
+	post {
     			success {
       				slackSend color: "good", message: "Pipeline passed ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
     				}
