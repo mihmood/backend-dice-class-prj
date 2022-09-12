@@ -10,7 +10,7 @@ spec:
       app: dice
   template:
     metadata:
-      labels: Project-backend-app
+      labels:
         tier: backend-app
         app: dice
     spec:
