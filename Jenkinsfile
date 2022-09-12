@@ -29,10 +29,10 @@ pipeline {
 				}
 			} 
 		}  
-    stage('Post') {
+  }
+	  post {
     			success {
       				slackSend color: "good", message: "Pipeline passed ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
     				}
   		}
- 	}
 }
