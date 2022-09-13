@@ -24,7 +24,7 @@ pipeline {
 			steps{
 				script {
 					docker.withRegistry( '', registryCredential ) {
-						sh 'docker compose push mihmood/backend-python:latest'
+						sh 'docker push mihmood/backend-python:latest'
 				} 
 			}
 		}
