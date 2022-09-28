@@ -19,6 +19,8 @@ pipeline {
 					sh 'docker compose up -d' 
 					sh 'sleep 5'
 					sh 'curl -I http://ec2-18-206-174-55.compute-1.amazonaws.com:9090/student/3'
+					sh 'sleep 5'
+					sh 'docker compose down'
 			}
 		} 
 	}
