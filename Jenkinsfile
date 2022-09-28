@@ -7,6 +7,8 @@ pipeline {
     stage('Build') {
 			steps {
 				dir(''){
+					sh 'docker compose down'
+					sh 'sleep 10'
 					sh 'docker compose build'
 				}
 			} 
@@ -32,10 +34,10 @@ pipeline {
 	}
     post {
 			success {
-				slackSend color: "good", message: "Pipeline passed ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
+				slackSend color: "good", message: "Backend Pipeline passed ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
 			}
 			failure {
-				slackSend failOnError: true, message: "Build failed ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
+				slackSend failOnError: true, message: "Backend Build failed ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
 			}
 		}
 }
