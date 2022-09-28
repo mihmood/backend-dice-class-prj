@@ -1,8 +1,9 @@
 version: '3.2'
 services:
   backend-app:
+    image: mihmood/backend-python:latest
     build: .
-      #image: mihmood/backend-app:1.4 
+      #image: backend-python:latest 
 #      context: backend-python/
       #context: mihmood/microservices-class-prj/backend-python/
       #      dockerfile: Dockerfile
